@@ -1,7 +1,7 @@
 package D8;
 
 
-public class UnfairSupermarket implements PersonQueue {
+public class ClusteredMarket implements PersonQueue {
     Person queue = null;
 
     public void addPerson(Person person) {
@@ -29,22 +29,33 @@ public class UnfairSupermarket implements PersonQueue {
 
     @Override
     public Person retrieve() {
-        Person oldest = findOldest();
-        remove(oldest);
-        return oldest;
+        Person olderThan65 = findOlderThan(65);
+        if (olderThan65 != null) {
+            remove(olderThan65);
+            return olderThan65;
+        } else {
+            Person olderThan18 = findOlderThan(18);
+            if (olderThan18 != null) {
+                remove(olderThan18);
+                return olderThan18;
+            } else {
+                Person nextOne = queue;
+                remove(nextOne);
+                return nextOne;
+            }
+        }
 
     }
 
-    private Person findOldest() {
-        Person oldest = queue;
+    private Person findOlderThan(int age) {
         Person current = queue;
         while (current != null) {
-            if (current.getAge() > oldest.getAge()) {
-                oldest = current;
+            if (current.getAge() >= age) {
+                return current;
             }
             current = current.getNext();
         }
-        return oldest;
+        return null;
     }
 
     private void remove(Person personRmv) {
@@ -81,7 +92,7 @@ public class UnfairSupermarket implements PersonQueue {
     }
 
 
-    private void listTheQueue() {
+    protected void listTheQueue() {
         if (queue == null) System.out.println("Nothing to print!");
         else {
             Person current = queue;
@@ -92,5 +103,3 @@ public class UnfairSupermarket implements PersonQueue {
         }
     }
 }
-
-
