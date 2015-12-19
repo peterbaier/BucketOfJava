@@ -7,20 +7,20 @@ public class SpecMap implements SimpleMap {
     @Override
     public void put(int key, String name) {
         Node nextNode = new Node(key, name);
-        if (head == null) head = nextNode;
+        if (isEmpty()) head = nextNode;
         else {
             Node current = head;
-            while (current != null) {
+            while (current.getNext() != null) {
                 if(current.getKey() == key) return;
-                current = current.getNext();
+                else current = current.getNext();
             }
-            current = nextNode;
+            current.setNext(nextNode);
         }
     }
 
     @Override
     public String get(int key) {
-        if(head == null) return null;
+        if(isEmpty()) return null;
         else return get(key,head);
     }
 

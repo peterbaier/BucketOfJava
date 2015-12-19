@@ -14,22 +14,25 @@ public class SpecMapTest {
     @Before
     public void setUp() throws Exception {
         sm = new SpecMap();
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        sm = null;
-    }
-
-    @Test
-    public void testPut() throws Exception {
         sm.put(123,"first");
         sm.put(456,"second");
         sm.put(789,"third");
     }
 
+    @After
+    public void tearDown() throws Exception {
+        sm = null;
+
+    }
+
+    @Test
+    public void testPut() throws Exception {
+        
+    }
+
     @Test
     public void testGet() throws Exception {
+
         assertEquals("second",sm.get(456));
     }
 
