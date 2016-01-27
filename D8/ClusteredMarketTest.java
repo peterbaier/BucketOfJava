@@ -26,7 +26,12 @@ public class ClusteredMarketTest {
         assertEquals("Tom",cm.retrieve().getName());
         assertEquals("Sara",cm.retrieve().getName());
         assertEquals("Linda",cm.retrieve().getName());
+    }
 
+
+    @Test
+    public void insertTest(){
 
     }
+
 }

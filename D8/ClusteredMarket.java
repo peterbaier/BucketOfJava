@@ -12,7 +12,6 @@ public class ClusteredMarket implements PersonQueue {
 
     public void servePerson() {
         System.out.println("Yes can I help " + retrieve().getName() + "?");
-        System.out.println("Thank you for shopping at us! See you later!\n");
     }
 
     @Override
